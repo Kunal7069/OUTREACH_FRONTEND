@@ -369,9 +369,11 @@ export const SectionView: React.FC<SectionViewProps> = ({
             </div>
 
             {/* Document Description */}
-            <p className="text-charcoal-grey text-sm mb-4 line-clamp-3 font-nunito leading-normal">
-              {doc.description}
-            </p>
+            {(section.name === "User DNA" || section.name === "Content Strategy") && (
+              <p className="text-charcoal-grey text-sm mb-4 line-clamp-3 font-nunito leading-normal">
+                {doc.description} {section.name}
+              </p>
+            )}
 
             {/* Document Meta */}
             <div className="flex items-center justify-between text-sm text-charcoal-grey/70 mb-4 font-nunito">
