@@ -379,7 +379,7 @@ const getGoogleViewerURL = (dropboxUrl: string) => {
                 </div>
               </div>
               <button
-                onClick={() => handleViewDocument(featuredPOV.document_url)}
+                onClick={() => handleViewDocument1(featuredPOV.document_url)}
                 className="w-full bg-gradient-to-r from-intelligence-blue to-intelligence-blue/90 hover:from-intelligence-blue/90 hover:to-intelligence-blue/80 text-white font-nunito font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <Eye className="w-5 h-5" />
@@ -395,13 +395,13 @@ const getGoogleViewerURL = (dropboxUrl: string) => {
       )}
 
       {/* Document Viewer Modal */}
-      {currentDocument && (
+      {/* {currentDocument && (
         <DocumentViewer
           document={currentDocument}
           onClose={() => setCurrentDocument(null)}
           onDownload={handleDownloadDocument}
         />
-      )}
+      )} */}
 
       {showModal && selectedDocumentUrl && (
   <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
