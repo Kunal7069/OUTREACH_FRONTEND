@@ -76,6 +76,15 @@ const handleViewDocument1 = (url: string) => {
   setShowModal(true);
 };
 
+
+const [showModal2, setShowModal2] = useState(false);
+const [selectedDocumentUrl2, setSelectedDocumentUrl2] = useState<string | null>(null);
+
+const handleViewDocument2 = (url: string) => {
+  setSelectedDocumentUrl2(url);
+  setShowModal2(true);
+};
+
 const getGoogleViewerURL = (dropboxUrl: string) => {
   const rawUrl = dropboxUrl
     .replace('www.dropbox.com', 'dl.dropboxusercontent.com')
@@ -379,7 +388,7 @@ const getGoogleViewerURL = (dropboxUrl: string) => {
                 </div>
               </div>
               <button
-                onClick={() => handleViewDocument1(featuredPOV.document_url)}
+                onClick={() => handleViewDocument2(featuredPOV.document_url)}
                 className="w-full bg-gradient-to-r from-intelligence-blue to-intelligence-blue/90 hover:from-intelligence-blue/90 hover:to-intelligence-blue/80 text-white font-nunito font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <Eye className="w-5 h-5" />
@@ -417,6 +426,28 @@ const getGoogleViewerURL = (dropboxUrl: string) => {
       </div>
       <iframe
         src={getGoogleViewerURL(selectedDocumentUrl)}
+        className="w-full h-full"
+        frameBorder="0"
+        title="PDF Viewer"
+      />
+    </div>
+  </div>
+)}
+
+{showModal2 && selectedDocumentUrl2 && (
+  <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div className="bg-white rounded-xl shadow-lg w-[90%] h-[90%] relative overflow-hidden flex flex-col">
+      <div className="flex items-center justify-between px-4 py-2 border-b">
+        <h2 className="text-lg font-semibold">{featuredPOV?.title} {featuredPOV?.description} </h2>
+        <button
+          onClick={() => setShowModal2(false)}
+          className="text-charcoal-grey hover:text-red-500"
+        >
+          <X className="w-6 h-6" />
+        </button>
+      </div>
+      <iframe
+        src={getGoogleViewerURL(selectedDocumentUrl2)}
         className="w-full h-full"
         frameBorder="0"
         title="PDF Viewer"
